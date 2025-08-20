@@ -1,12 +1,27 @@
-import React from "react";
-import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/footer/Footer";
 import AllRoutes from "./components/routes/AllRoutes";
+import AppBgVideo from "./assets/video/NewAppBG.mp4";
+// import AppBgAudio from "./assets/audio/NewAppM_BG.mp3"
 
 const App = () => {
-  return <section className="bg-black text-white h-screen w-full">
-    <AllRoutes />
-  </section>
+  return (
+    <section className="text-white h-screen w-full relative m-auto">
+      {/* video section */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute top-0 left-0 h-full w-full object-cover -z-10"
+      >
+        <source src={AppBgVideo} type="video/mp4" />
+      </video>
+
+      {/* 🤕🤕🤕 */}
+      {/* <audio src={AppBgAudio} autoPlay loop controls={false} /> */}
+
+      <AllRoutes />
+    </section>
+  );
 };
 
 export default App;

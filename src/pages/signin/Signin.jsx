@@ -28,31 +28,31 @@ const Signin = () => {
   };
 
   return (
-    <section className="h-full grid place-items-center text-black duration-700">
+    <section className="h-full grid place-items-center text-black duration-700 backdrop-blur-sm">
       <form
         action=""
         onSubmit={handleLogin}
         className="h-[200px] flex flex-col justify-evenly items-center bg-slate-800 p-3 rounded-md"
       >
-        <h1 className="text-green-500">Do Signin</h1>
+        <h1 className="text-green-500 font-bold">Do Signin</h1>
         <input
-          className="px-2 rounded-md"
+          className="p-2 rounded-md text-sm"
           type="text"
           name="userEmail"
           id=""
           value={userEmail}
           onChange={handleInput}
           autoFocus
-          placeholder='email ...'
-          />
+          placeholder="email ..."
+        />
         <input
-          className="px-2 rounded-md"
+          className="p-2 rounded-md text-sm"
           type="text"
           name="userPass"
           id=""
           value={userPass}
           onChange={handleInput}
-          placeholder='password ...'
+          placeholder="password ..."
         />
 
         <button className="hover:bg-blue-800 hover:text-white bg-white text-black duration-500 px-3 rounded-md">

@@ -30,16 +30,16 @@ const Signup = () => {
   };
 
   return (
-    <section className="h-full grid place-items-center text-black">
+    <section className="h-full grid place-items-center text-black backdrop-blur-sm">
       {" "}
       <form
         action=""
         onSubmit={handleRegister}
         className="h-[200px] flex flex-col justify-evenly items-center bg-slate-800 p-3 rounded-md"
       >
-        <h1 className="text-green-500">Do Signup</h1>
+        <h1 className="text-green-500 font-bold text-sm">Do Signup</h1>
         <input
-          className="px-2 rounded-md"
+          className="p-2 rounded-md text-sm"
           type="text"
           name="userName"
           id=""
@@ -49,7 +49,7 @@ const Signup = () => {
           placeholder="your name ..."
         />
         <input
-          className="px-2 rounded-md"
+          className="p-2 rounded-md text-sm"
           type="text"
           name="userEmail"
           id=""
@@ -58,7 +58,7 @@ const Signup = () => {
           placeholder="your email ..."
         />
         <input
-          className="px-2 rounded-md"
+          className="p-2 rounded-md text-sm"
           type="text"
           name="userPass"
           id=""
@@ -67,9 +67,9 @@ const Signup = () => {
           placeholder="your password ..."
         />
 
-          <button className="hover:bg-blue-800 hover:text-white bg-white text-black duration-500 px-3 rounded-md">
-            signup
-          </button>
+        <button className="hover:bg-blue-800 hover:text-white bg-white text-black duration-500 p-2 rounded-md">
+          signup
+        </button>
       </form>
     </section>
   );
