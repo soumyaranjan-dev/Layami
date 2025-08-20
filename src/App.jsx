@@ -1,5 +1,5 @@
 import AllRoutes from "./components/routes/AllRoutes";
-import AppBgVideo from "./assets/video/NewAppBG.mp4";
+import AppBgVideo from "./assets/video/UWF_BG.mp4";
 // import AppBgAudio from "./assets/audio/NewAppM_BG.mp3"
 
 const App = () => {

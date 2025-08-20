@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
 const Explore = () => {
   return (
-    <div>Explore</div>
-  )
-}
+    <section className="backdrop-blur-sm">
+      <input
+        type="search"
+        name="searchData"
+        id="searchData"
+        className="bg-transparent p-2 shadow-sm border-2 border-lime-500"
+        autoFocus
+      />
+    </section>
+  );
+};
 
-export default Explore
+export default Explore;
