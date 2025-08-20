@@ -1,9 +1,7 @@
 import React from 'react'
 
 const Playlist = () => {
-  return (
-    <div>Playlist</div>
-  )
+  return <div className="duration-700">Playlist</div>;
 }
 
 export default Playlist

@@ -2,7 +2,7 @@ import React from "react";
 
 const Explore = () => {
   return (
-    <section className="backdrop-blur-sm">
+    <section className="backdrop-blur-sm duration-700">
       <input
         type="search"
         name="searchData"
