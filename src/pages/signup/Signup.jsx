@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     userName: "",
     userEmail: "",
     userPass: "",
   });
 
-  const { userName, userEmail, userPass } = formData;
+  const { userName, userEmail, userPass} = formData;
 
   const handleInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,9 +24,7 @@ const Signup = () => {
       userEmail: "",
       userPass: "",
     });
-    setTimeout(() => {
-      navigate("/signin")
-    },1000)
+    navigate("/signin");
   };
 
   return (
@@ -66,7 +64,6 @@ const Signup = () => {
           onChange={handleInput}
           placeholder="your password ..."
         />
-
         <button className="hover:bg-blue-800 hover:text-white bg-white text-black duration-500 p-2 rounded-md">
           signup
         </button>

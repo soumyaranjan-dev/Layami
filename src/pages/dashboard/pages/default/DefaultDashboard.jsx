@@ -67,7 +67,6 @@ const DefaultDashboard = () => {
     },
   ];
 
-
   return (
     <div className="backdrop-blur-sm h-screen w-full p-2 bg-transparent rounded-md pt-[100px] pb-[80px] flex flex-col justify-between gap-5 duration-700 space-y-2">
       <section className="h-[9rem] w-full border border-green-700 rounded-lg bg-white/10 backdrop-blur-lg ">
