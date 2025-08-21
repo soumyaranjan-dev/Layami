@@ -54,7 +54,7 @@ const Signin = () => {
           onChange={handleInput}
           placeholder="password ..."
         />
-        <section className="flex space-x-2 text-white">
+        {/* <section className="flex space-x-2 text-white">
           <label htmlFor="role">Role: </label>
           <br />
           <input
@@ -73,7 +73,7 @@ const Signin = () => {
             className="p-2"
           />{" "}
           admin
-        </section>
+        </section> */}
 
         <button className="hover:bg-blue-800 hover:text-white bg-white text-black duration-500 px-3 rounded-md">
           signin
