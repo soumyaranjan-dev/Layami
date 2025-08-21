@@ -4,7 +4,7 @@ import AppBgVideo from "./assets/video/UWF_BG.mp4";
 
 const App = () => {
   return (
-    <section className="text-white h-screen w-full relative m-auto">
+    <section className="text-white h-auto w-full relative m-auto">
       {/* video section */}
       <video
         autoPlay

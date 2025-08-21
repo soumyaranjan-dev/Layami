@@ -30,12 +30,12 @@ const Signup = () => {
   };
 
   return (
-    <section className="h-full grid place-items-center text-black backdrop-blur-sm">
+    <section className="h-screen grid place-items-center text-black backdrop-blur-sm">
       {" "}
       <form
         action=""
         onSubmit={handleRegister}
-        className="h-[200px] flex flex-col justify-evenly items-center bg-slate-800 p-3 rounded-md"
+        className="h-auto flex flex-col justify-evenly items-center bg-slate-800 p-3 rounded-md space-y-2"
       >
         <h1 className="text-green-500 font-bold text-sm">Do Signup</h1>
         <input

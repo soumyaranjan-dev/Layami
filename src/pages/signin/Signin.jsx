@@ -28,7 +28,7 @@ const Signin = () => {
   };
 
   return (
-    <section className="h-full grid place-items-center text-black duration-700 backdrop-blur-sm">
+    <section className="h-screen grid place-items-center text-black duration-700 backdrop-blur-sm">
       <form
         action=""
         onSubmit={handleLogin}
