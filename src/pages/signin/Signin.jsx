@@ -1,27 +1,43 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Signin = () => {
-  const [formData, setFormData] = useState(
-    {
-      userEmail: "",
-      userPass:""
-    }
-  )
-  const navigate = useNavigate()
-  const {userEmail, userPass} = formData
-  const token = import.meta.env.VITE_TOKEN
+  const [formData, setFormData] = useState({
+    userEmail: "",
+    userPass: "",
+  });
+  const navigate = useNavigate();
+  const { userEmail, userPass } = formData;
+  // const token = import.meta.env.VITE_TOKEN
 
-  
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const registeredUser = JSON.parse(localStorage.getItem("users"))
-    console.log(registeredUser)
-    if(!userEmail || !userPass || registeredUser.userEmail !== userEmail || registeredUser.userPass !== userPass) return
-    
-    localStorage.setItem("token", JSON.stringify(token))
-    navigate("/dashboard")    
+  const handleReset = () => {
+    navigate("/reset")
   }
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const {data} = await axios.post(
+        "http://localhost:8001/public/signin",
+        formData
+      );
+      if (!data.token) {
+        toast.error("no token received")
+        return
+      }
+      localStorage.setItem("token", data.token);
+      navigate("/dashboard");
+      
+      setFormData({
+        userEmail: "",
+        userPass: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -52,35 +68,15 @@ const Signin = () => {
           id=""
           value={userPass}
           onChange={handleInput}
-          placeholder="password ..."
+          placeholder="userPass ..."
         />
-        {/* <section className="flex space-x-2 text-white">
-          <label htmlFor="role">Role: </label>
-          <br />
-          <input
-            type="radio"
-            name="userRole"
-            value={userRole}
-            id="role"
-            className="p-2"
-          />{" "}
-          user
-          <input
-            type="radio"
-            name="userRole"
-            value={userRole}
-            id="role"
-            className="p-2"
-          />{" "}
-          admin
-        </section> */}
-
+        <p className="text-[12px] text-white underline hover:text-blue-700 cursor-pointer" onClick={handleReset}>reset password</p>
         <button className="hover:bg-blue-800 hover:text-white bg-white text-black duration-500 px-3 rounded-md">
           signin
         </button>
       </form>
     </section>
   );
-}
+};
 
-export default Signin
+export default Signin;

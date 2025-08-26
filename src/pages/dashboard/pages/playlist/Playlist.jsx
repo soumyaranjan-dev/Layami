@@ -10,7 +10,7 @@ const Playlist = () => {
       d: "bg-black",
       e: "bg-emerald-700",
       f: "bg-fuchsia-700",
-      g: "bg-grey-700",
+      g: "bg-gray-700",
       h: "bg-black",
       i: "bg-indigo-700",
       j: "bg-black",
@@ -26,7 +26,7 @@ const Playlist = () => {
       t: "bg-teal-700",
       u: "bg-black",
       v: "bg-violet-700",
-      w: "bg-white",
+      w: "bg-gray-700",
       x: "bg-black",
       y: "bg-yellow-700",
       z: "bg-zinc-700",
@@ -73,7 +73,7 @@ const Playlist = () => {
     },
   ];
   return (
-    <section className="h-[calc(100vh-4rem)] bg-black/10 duration-700 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pt-[6rem] md:pt-[6rem] lg:pt-[6rem] p-2 md:p-4 lg:p-6 gap-2 overflow-scroll customScrollbar text-sm md:text-base lg:text-lg border-none">
+    <section className="min-h-screen bg-black/10 duration-700 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pt-[6rem] md:pt-[6rem] lg:pt-[6rem] p-2 md:p-4 lg:p-6 gap-2 overflow-y-scroll customScrollbar text-sm md:text-base lg:text-lg border-none">
       {playlists?.map((playlist) => {
         return (
           <Fragment key={playlist._id}>

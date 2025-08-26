@@ -1,5 +1,6 @@
 import AllRoutes from "./components/routes/AllRoutes";
 import AppBgVideo from "./assets/video/UWF_BG.mp4";
+import { ToastContainer } from "react-toastify";
 // import AppBgAudio from "./assets/audio/NewAppM_BG.mp3"
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
       {/* <audio src={AppBgAudio} autoPlay loop controls={false} /> */}
 
       <AllRoutes />
+      <ToastContainer/>
     </section>
   );
 };

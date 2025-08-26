@@ -1,38 +1,27 @@
-import React, { Fragment } from "react";
+import axios from "axios";
+import React, { Fragment, useEffect, useState } from "react";
 
 const DefaultDashboard = () => {
-  const songs = [
-    {
-      id: 1,
-      title: "Echoes of Time",
-      artist: "Aria Nova",
-      cover: "https://picsum.photos/200?random=1",
-    },
-    {
-      id: 2,
-      title: "Velvet Dreams",
-      artist: "Luna Waves",
-      cover: "https://picsum.photos/200?random=2",
-    },
-    {
-      id: 3,
-      title: "Midnight Bloom",
-      artist: "Kai Orion",
-      cover: "https://picsum.photos/200?random=3",
-    },
-    {
-      id: 4,
-      title: "Golden Haze",
-      artist: "Solstice",
-      cover: "https://picsum.photos/200?random=4",
-    },
-    {
-      id: 5,
-      title: "Neon Mirage",
-      artist: "Vera Lux",
-      cover: "https://picsum.photos/200?random=5",
-    },
-  ];
+  const [songs, getSongs] = useState([]);
+
+  useEffect(() => {
+    async function fetchSongs() {
+      const token = localStorage.getItem("token")
+      console.log(token)
+      try {
+        const { data } = await axios.get("http://localhost:8001/user/songs", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        // console.log(data.songs)
+        getSongs(data.songs);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchSongs();
+  }, []);
 
   const artists = [
     {
@@ -106,29 +95,26 @@ const DefaultDashboard = () => {
   ];
 
   return (
-    <section className="backdrop-blur-sm h-[calc(100vh-4rem)] w-full p-2 md:p-4 lg:p-6 bg-transparent rounded-md pt-[5rem] md:pt-[5rem] lg:pt-[5rem] pb-[4rem] flex flex-col justify-between gap-5 duration-700 space-y-2 text-sm">
+    <section className="backdrop-blur-sm h-[calc(100vh-4rem)] overflow-y-scroll customScrollbar w-full p-2 md:p-4 lg:p-6 bg-transparent rounded-md pt-[6rem] lg:pt-[5rem] md:pt-[5rem] pb-[4rem] flex flex-col justify-between gap-5 duration-700 space-y-2 text-sm">
       {/* quick picks */}
-      <section className="h-[9rem] md:[11rem] lg:[13rem] w-full border border-green-700 rounded-lg bg-white/10 backdrop-blur-lg ">
-        <h1 className="relative bottom-7 font-semibold">Quick Picks</h1>
-        <section className="h-[90%] w-full flex justify-between items-center overflow-scroll customScrollbar relative bottom-5 text-sm p-2 md:p-4 lg:p-6 space-x-4">
+      <section className="h-[9rem] md:h-[11rem] lg:h-[13rem] w-full border border-green-700 rounded-lg bg-white/10 backdrop-blur-lg">
+        <h1 className="relative bottom-6 font-semibold">Quick Picks</h1>
+        <section className="h-[90%] w-full flex justify-between md:justify-around lg:justify-evenly items-center overflow-scroll customScrollbar relative bottom-5 text-sm p-2 md:p-4 lg:p-6 space-x-4">
           {songs.map((song) => {
             return (
-              <Fragment key={song.id}>
-                <section className="h-full min-w-[60px]">
+              <Fragment key={song.songId}>
+                <section className="h-full min-w-[60px] md:min-w-[80px] lg:min-w-[100px]">
                   <section>
                     <img
                       src={song.cover}
                       alt={song.title}
-                      className="object-cover rounded-lg h-[4rem]"
+                      className="object-cover rounded-lg h-[4rem] md:h-[6rem] lg:h-[7rem]"
                     />
                   </section>
                   <section>
-                    <h2 className="font-semibold text-black">
-                      {song.title.split(" ")[0]}
+                    <h2 className="font-bold text-white">
+                      {song.title?.split(" ")[0]}
                     </h2>
-                  </section>
-                  <section>
-                    <p>{song.artist.split(" ")[0]}</p>
                   </section>
                 </section>
               </Fragment>
@@ -138,22 +124,22 @@ const DefaultDashboard = () => {
       </section>
 
       {/* trending songs */}
-      <section className="h-[9rem] w-full border border-green-700 rounded-lg  backdrop-blur-lg  bg-white/10">
+      <section className="h-[9rem] md:h-[11rem] lg:h-[13rem] w-full border border-green-700 rounded-lg bg-white/10 backdrop-blur-lg">
         <h1 className="relative bottom-7 font-semibold">Trending Picks</h1>
-        <section className="h-[90%] w-full flex justify-between items-center overflow-scroll customScrollbar relative bottom-5 text-sm p-2 space-x-4">
+        <section className="h-[90%] w-full flex justify-between md:justify-around lg:justify-evenly items-center overflow-scroll customScrollbar  text-sm p-2 space-x-4">
           {trendingSongs.map((song) => {
             return (
               <Fragment key={song._id}>
-                <section className="h-full min-w-[60px]">
+                <section className="h-full min-w-[60px] md:min-w-[80px] lg:min-w-[100px]">
                   <section>
                     <img
                       src={song.cover}
                       alt={song.title}
-                      className="object-cover rounded-lg h-[4rem]"
+                      className="object-cover rounded-lg h-[4rem] md:h-[6rem] lg:h-[7rem]"
                     />
                   </section>
                   <section>
-                    <h2 className="font-semibold text-black">
+                    <h2 className="font-bold text-white">
                       {song.title.split(" ")[0]}
                     </h2>
                   </section>
@@ -168,26 +154,26 @@ const DefaultDashboard = () => {
       </section>
 
       {/* artist section */}
-      <section className="h-[9rem] w-full border border-green-700 rounded-lg bg-white/10  backdrop-blur-lg ">
+      <section className="h-[9rem] md:h-[11rem] lg:h-[13rem] w-full border border-green-700 rounded-lg bg-white/10 backdrop-blur-lg">
         <h1 className="relative bottom-7  font-semibold">Artist Picks</h1>
-        <section className="h-[90%] w-full flex justify-between items-center overflow-scroll customScrollbar relative bottom-5 text-sm p-2 space-x-4">
+        <section className="h-[90%] w-full flex justify-between md:justify-around lg:justify-evenly items-center m-auto overflow-scroll customScrollbar relative bottom-5 text-sm p-2 md:p-4 lg:p-6 space-x-4">
           {artists.map((artist) => {
             return (
               <Fragment key={artist.id}>
-                <section className="h-full min-w-[60px]">
+                <section className="h-full min-w-[60px] md:min-w-[80px] lg:min-w-[100px]">
                   <section>
                     <img
                       src={artist.image}
                       alt={artist.name}
-                      className="object-cover rounded-full hover:-translate-y-3 duration-700 h-[4rem]"
+                      className="object-cover rounded-lg h-[4rem] md:h-[6rem] lg:h-[7rem]"
                     />
                   </section>
                   <section>
-                    <h2 className="font-semibold text-black flex justify-center">
+                    <h2 className="font-bold text-white">
                       {artist.name.split(" ")[0]}
                     </h2>
                   </section>
-                  <section className="flex justify-center">
+                  <section className="">
                     <p>{artist.genre.split(" ")[0]}</p>
                   </section>
                 </section>

@@ -11,6 +11,8 @@ import DefaultDashboard from "../../pages/dashboard/pages/default/DefaultDashboa
 import Explore from "../../pages/dashboard/pages/explore/Explore";
 import Playlist from "../../pages/dashboard/pages/playlist/Playlist";
 import Private from "../private/Private";
+import Profile from "../../pages/dashboard/pages/profile/Profile";
+import ResetPass from "../../pages/resetpassword/ResetPass";
 
 const AllRoutes = () => {
   const MyRoutes = createBrowserRouter([
@@ -25,6 +27,10 @@ const AllRoutes = () => {
     {
       path: "/signin",
       element: <Signin />,
+    },
+    {
+      path: "/reset",
+      element: <ResetPass />,
     },
     {
       path: "/dashboard",
@@ -49,6 +55,10 @@ const AllRoutes = () => {
         {
           path: "playlist",
           element: <Playlist />,
+        },
+        {
+          path: "profile",
+          element: <Profile />,
         },
       ],
     },

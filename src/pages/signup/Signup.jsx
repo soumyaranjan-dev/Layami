@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -5,24 +6,28 @@ const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     userName: "",
-    userEmail: "",
-    userPass: "",
+    userEmail: ""
   });
 
-  const { userName, userEmail, userPass} = formData;
+  const { userName, userEmail} = formData;
 
   const handleInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     localStorage.setItem("registered", "true");
     localStorage.setItem("users", JSON.stringify(formData));
+    try {
+      await axios.post("http://localhost:8001/public/signup", formData)
+      console.log("registered")
+    } catch (error) {
+      console.log(error)
+    }
     setFormData({
       userName: "",
       userEmail: "",
-      userPass: "",
     });
     navigate("/signin");
   };
@@ -55,15 +60,7 @@ const Signup = () => {
           onChange={handleInput}
           placeholder="your email ..."
         />
-        <input
-          className="p-2 rounded-md text-sm"
-          type="text"
-          name="userPass"
-          id=""
-          value={userPass}
-          onChange={handleInput}
-          placeholder="your password ..."
-        />
+        
         <button className="hover:bg-blue-800 hover:text-white bg-white text-black duration-500 p-2 rounded-md">
           signup
         </button>
