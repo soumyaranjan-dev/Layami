@@ -73,7 +73,7 @@ const Playlist = () => {
     },
   ];
   return (
-    <section className="min-h-screen bg-black/10 duration-700 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pt-[6rem] md:pt-[6rem] lg:pt-[6rem] p-2 md:p-4 lg:p-6 gap-2 overflow-y-scroll customScrollbar text-sm md:text-base lg:text-lg border-none">
+    <section className="h-[calc(100vh-4rem)] bg-black/10 duration-700 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pt-[6rem] md:pt-[6rem] lg:pt-[6rem] p-2 md:p-4 lg:p-6 gap-2 overflow-y-scroll customScrollbar text-sm md:text-base lg:text-lg border-none">
       {playlists?.map((playlist) => {
         return (
           <Fragment key={playlist._id}>

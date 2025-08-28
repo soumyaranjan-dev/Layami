@@ -4,17 +4,18 @@ import React, { Fragment, useEffect, useState } from "react";
 const DefaultDashboard = () => {
   const [songs, getSongs] = useState([]);
 
+  const token = localStorage.getItem("token")
+  console.log(typeof token)
+
   useEffect(() => {
     async function fetchSongs() {
-      const token = localStorage.getItem("token")
-      console.log(token)
       try {
         const { data } = await axios.get("http://localhost:8001/user/songs", {
-          headers: {
-            Authorization: `Bearer ${token}`,
+          "headers": {
+            "authorization": `Bearer ${token}`,
           },
         });
-        // console.log(data.songs)
+        console.log(data)
         getSongs(data.songs);
       } catch (error) {
         console.log(error);
@@ -100,7 +101,7 @@ const DefaultDashboard = () => {
       <section className="h-[9rem] md:h-[11rem] lg:h-[13rem] w-full border border-green-700 rounded-lg bg-white/10 backdrop-blur-lg">
         <h1 className="relative bottom-6 font-semibold">Quick Picks</h1>
         <section className="h-[90%] w-full flex justify-between md:justify-around lg:justify-evenly items-center overflow-scroll customScrollbar relative bottom-5 text-sm p-2 md:p-4 lg:p-6 space-x-4">
-          {songs.map((song) => {
+          {songs?.map((song) => {
             return (
               <Fragment key={song.songId}>
                 <section className="h-full min-w-[60px] md:min-w-[80px] lg:min-w-[100px]">

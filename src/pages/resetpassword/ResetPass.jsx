@@ -21,7 +21,6 @@ const ResetPass = () => {
     } catch (error) {
       console.log(error)
     }
-    
   };
   
   const handleInput = (e) => {

@@ -13,6 +13,9 @@ import Playlist from "../../pages/dashboard/pages/playlist/Playlist";
 import Private from "../private/Private";
 import Profile from "../../pages/dashboard/pages/profile/Profile";
 import ResetPass from "../../pages/resetpassword/ResetPass";
+import AdminDashboard from "../../pages/admindashboard/AdminDashboard";
+import Allsongs from "../../pages/admindashboard/pages/allsongs/Allsongs";
+import PostSongs from "../../pages/admindashboard/pages/postsongs/PostSongs";
 
 const AllRoutes = () => {
   const MyRoutes = createBrowserRouter([
@@ -62,6 +65,20 @@ const AllRoutes = () => {
         },
       ],
     },
+    {
+      path: "/admindashboard",
+      element: <AdminDashboard />,
+      children: [
+        {
+          path: "allsongs",
+          element: <Allsongs/>
+        },
+        {
+          path: "addsong",
+          element: <PostSongs/>
+        }
+      ]
+    }
   ]);
 
   return <RouterProvider router={MyRoutes} />;
