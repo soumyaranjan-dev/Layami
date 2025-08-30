@@ -16,6 +16,7 @@ import ResetPass from "../../pages/resetpassword/ResetPass";
 import AdminDashboard from "../../pages/admindashboard/AdminDashboard";
 import Allsongs from "../../pages/admindashboard/pages/allsongs/Allsongs";
 import PostSongs from "../../pages/admindashboard/pages/postsongs/PostSongs";
+import Playsongui from "../playsongui/Playsongui";
 
 const AllRoutes = () => {
   const MyRoutes = createBrowserRouter([
@@ -34,6 +35,10 @@ const AllRoutes = () => {
     {
       path: "/reset",
       element: <ResetPass />,
+    },
+    {
+      path: "/playsong",
+      element: <Playsongui />,
     },
     {
       path: "/dashboard",
@@ -67,18 +72,25 @@ const AllRoutes = () => {
     },
     {
       path: "/admindashboard",
-      element: <AdminDashboard />,
+      element: (
+        <>
+          <Navbar />
+          <Private>
+            <AdminDashboard />
+          </Private>
+        </>
+      ),
       children: [
         {
           path: "allsongs",
-          element: <Allsongs/>
+          element: <Allsongs />,
         },
         {
           path: "addsong",
-          element: <PostSongs/>
-        }
-      ]
-    }
+          element: <PostSongs />,
+        },
+      ],
+    },
   ]);
 
   return <RouterProvider router={MyRoutes} />;
