@@ -17,6 +17,7 @@ import AdminDashboard from "../../pages/admindashboard/AdminDashboard";
 import Allsongs from "../../pages/admindashboard/pages/allsongs/Allsongs";
 import PostSongs from "../../pages/admindashboard/pages/postsongs/PostSongs";
 import Playsongui from "../playsongui/Playsongui";
+import Adminfooter from "../adminfooter/Adminfooter";
 
 const AllRoutes = () => {
   const MyRoutes = createBrowserRouter([
@@ -78,11 +79,12 @@ const AllRoutes = () => {
           <Private>
             <AdminDashboard />
           </Private>
+          <Adminfooter/>
         </>
       ),
       children: [
         {
-          path: "allsongs",
+          path: "",
           element: <Allsongs />,
         },
         {
