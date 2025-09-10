@@ -49,9 +49,8 @@ const Explore = () => {
     <>
       <section
         className="h-[calc(100vh-4rem)] backdrop-blur-sm duration-700 pt-[6rem] overflow-y-scroll customScrollbar
-      md:pt-[6rem] lg:pt-[6rem] p-2 md:p-4 lg:p-6 grid grid-cols-1 md:grid-cols-2 place-items-center gap-5 text-sm md:text-base lg:text-lg"
+      md:pt-[6rem] lg:pt-[6rem] p-2 md:p-4 lg:p-6  text-sm md:text-base lg:text-lg flex flex-col items-center justify-center"
       >
-      <section>
         <input
           type="search"
           name="searchData"
@@ -60,7 +59,7 @@ const Explore = () => {
           placeholder="search music ..."
           autoFocus
         />
-      </section>
+        <section className="p-2 md:p-4 lg:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center gap-5">
         {songs.map((song) => {
           return (
             <Fragment key={song._id}>
@@ -75,6 +74,7 @@ const Explore = () => {
             </Fragment>
           );
         })}
+        </section>
       </section>
     </>
   );

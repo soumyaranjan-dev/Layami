@@ -16,11 +16,11 @@ const Landing = () => {
   }
   return (
     <div className="flex flex-col items-center justify-center h-screen backdrop-blur-sm">
-      <h1 className="text-small p-2 font-bold mb-6 text-black">
+      <h1 className="text-small p-2 font-bold mb-6 text-white">
         Layami Awaits You 🪶
       </h1>
       <button
-        className="px-2 py-2 bg-blue-600 text-white text-small font-semibold rounded-lg shadow hover:bg-blue-700 transition"
+        className="px-2 py-2 bg-blue-600 text-white hover:text-black text-small font-semibold rounded-lg shadow hover:bg-blue-700 transition"
         onClick={goToDest}
       >
         Get Started

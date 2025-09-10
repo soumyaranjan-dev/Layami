@@ -17,7 +17,7 @@ const Playsongui = () => {
       ) : (
         <h1>no song selected ...</h1>
       )}
-      <p onClick={() => navigate("/dashboard")}>back</p>
+      <button onClick={() => navigate("/dashboard")}>back</button>
     </section>
   );
 };
