@@ -78,7 +78,7 @@ const Playlist = () => {
         return (
           <Fragment key={playlist._id}>
             <section
-              className={`h-[9rem] ${getMyBgColor(
+              className={`h-[4rem] ${getMyBgColor(
                 playlist.playlistName
               )} rounded-lg p-4 border border-lime-500 backdrop-blur-md bg-opacity-40`}
             >
